@@ -1,0 +1,160 @@
+warn("if ur shitsploit is ass then it wont load instantly") -- bonus i added
+-- Create ScreenGui
+local screenGui = Instance.new("ScreenGui")
+screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+screenGui.IgnoreGuiInset = true
+
+-- Create the main Frame for the menu
+local mainFrame = Instance.new("Frame")
+mainFrame.Size = UDim2.new(0, 450, 0, 300) -- Increased width from 350 to 450
+mainFrame.Position = UDim2.new(0.5, -225, 0.5, -150) -- Adjusted offset to keep it centered
+mainFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 20) 
+mainFrame.BorderSizePixel = 0
+mainFrame.Parent = screenGui
+
+-- Add UI Corner for rounded edges
+local uiCorner = Instance.new("UICorner")
+uiCorner.CornerRadius = UDim.new(0, 15)
+uiCorner.Parent = mainFrame
+
+-- Add shadow via UIStroke
+local uiStroke = Instance.new("UIStroke")
+uiStroke.Color = Color3.fromRGB(255, 255, 255)
+uiStroke.Thickness = 2
+uiStroke.Transparency = 0.5
+uiStroke.Parent = mainFrame
+
+-- Header "NO FE Snake"
+local titleLabel = Instance.new("TextLabel")
+titleLabel.Size = UDim2.new(1, 0, 0, 40)
+titleLabel.Position = UDim2.new(0, 0, 0, 15)
+titleLabel.BackgroundTransparency = 1
+titleLabel.Text = "NO FE Snake"
+titleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+titleLabel.TextScaled = true
+titleLabel.Font = Enum.Font.GothamBold
+titleLabel.Parent = mainFrame
+
+-- Button "Copy Owner Script Link"
+local copyButton = Instance.new("TextButton")
+copyButton.Size = UDim2.new(0.8, 0, 0, 40)
+copyButton.Position = UDim2.new(0.1, 0, 0, 70)
+copyButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+copyButton.Text = "Copy Owner Link"
+copyButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+copyButton.TextScaled = true
+copyButton.Font = Enum.Font.Gotham
+copyButton.Parent = mainFrame
+
+local copyCorner = Instance.new("UICorner")
+copyCorner.CornerRadius = UDim.new(0, 10)
+copyCorner.Parent = copyButton
+
+-- Button "Start Script"
+local startButton = Instance.new("TextButton")
+startButton.Size = UDim2.new(0.8, 0, 0, 40)
+startButton.Position = UDim2.new(0.1, 0, 0, 120)
+startButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+startButton.Text = "Start Script"
+startButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+startButton.TextScaled = true
+startButton.Font = Enum.Font.Gotham
+startButton.Parent = mainFrame
+
+local startCorner = Instance.new("UICorner")
+startCorner.CornerRadius = UDim.new(0, 10)
+startCorner.Parent = startButton
+
+-- Description
+local descriptionLabel = Instance.new("TextLabel")
+descriptionLabel.Size = UDim2.new(0.9, 0, 0, 100)
+descriptionLabel.Position = UDim2.new(0.05, 0, 0, 170)
+descriptionLabel.BackgroundTransparency = 1
+descriptionLabel.Text = "THIS SCRIPT WAS DEOBFUSCATED BY RGSEX!!!!!!"
+descriptionLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
+descriptionLabel.TextSize = 14 -- Slightly larger text for the wider frame
+descriptionLabel.TextWrapped = true
+descriptionLabel.Font = Enum.Font.Gotham
+descriptionLabel.TextYAlignment = Enum.TextYAlignment.Top
+descriptionLabel.Parent = mainFrame
+
+-- Appearance animation
+mainFrame.Position = UDim2.new(0.5, -225, 0.5, -250) -- Adjusted for the new width
+mainFrame.BackgroundTransparency = 1
+titleLabel.TextTransparency = 1
+copyButton.BackgroundTransparency = 1
+copyButton.TextTransparency = 1
+startButton.BackgroundTransparency = 1
+startButton.TextTransparency = 1
+descriptionLabel.TextTransparency = 1
+
+local tweenService = game:GetService("TweenService")
+local tweenInfo = TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+
+-- Smooth fade-in
+tweenService:Create(mainFrame, tweenInfo, {Position = UDim2.new(0.5, -225, 0.5, -150), BackgroundTransparency = 0}):Play()
+tweenService:Create(titleLabel, tweenInfo, {TextTransparency = 0}):Play()
+tweenService:Create(copyButton, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out, 0.2), {BackgroundTransparency = 0, TextTransparency = 0}):Play()
+tweenService:Create(startButton, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out, 0.4), {BackgroundTransparency = 0, TextTransparency = 0}):Play()
+tweenService:Create(descriptionLabel, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out, 0.6), {TextTransparency = 0}):Play()
+
+-- Button Functionality
+copyButton.MouseButton1Click:Connect(function()
+    setclipboard("https://bigrat.monster")
+    copyButton.Text = "Copied RAT!"
+    task.wait(1)
+    copyButton.Text = "heres a rat for ya (pls dont copy it)"
+end)
+
+startButton.MouseButton1Click:Connect(function()
+    copyButton.Active = false
+    startButton.Active = false
+    
+    local disappearTweenInfo = TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.In)
+    
+    tweenService:Create(mainFrame, disappearTweenInfo, {Position = UDim2.new(0.5, -225, 0.5, -250), BackgroundTransparency = 1}):Play()
+    tweenService:Create(titleLabel, disappearTweenInfo, {TextTransparency = 1}):Play()
+    tweenService:Create(copyButton, disappearTweenInfo, {BackgroundTransparency = 1, TextTransparency = 1}):Play()
+    tweenService:Create(startButton, disappearTweenInfo, {BackgroundTransparency = 1, TextTransparency = 1}):Play()
+    tweenService:Create(descriptionLabel, disappearTweenInfo, {TextTransparency = 1}):Play()
+    
+    task.wait(0.5)
+    screenGui:Destroy()
+    
+    -- Execute custom logic
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/GhostPlayer352/UI-Library/refs/heads/main/Ghost%20Gui'))()
+local coreGui = game:GetService("CoreGui")
+local ghostGui = coreGui:WaitForChild("GhostGui")
+local mainFrame = ghostGui:WaitForChild("MainFrame")
+local title = mainFrame:WaitForChild("Title")
+    title.Text = "UNOBFUSCATED FE SNAKE BY @RGX-275"
+    -- Auto scale text
+title.TextScaled = true
+
+-- Optional but HIGHLY recommended so it doesn't go stupid-big
+local constraint = Instance.new("UITextSizeConstraint")
+constraint.MinTextSize = 12
+constraint.MaxTextSize = 48
+constraint.Parent = title
+
+    AddContent("TextButton", "White Snake", [[
+    loadstring(game:HttpGet("https://pastebin.com/raw/bHv33pLi"))()
+    ]])
+
+    AddContent("TextButton", "Pink Snake", [[
+    loadstring(game:HttpGet("https://pastebin.com/raw/jGgn6SDn"))()
+    ]])
+
+    AddContent("TextButton", "Black Snake", [[
+    loadstring(game:HttpGet("https://pastebin.com/raw/4CTBvaGp"))()
+    ]])
+
+    AddContent("TextButton", "Remove Snakes", [[
+    local PpHolder = workspace:FindFirstChild("PpHolder")
+
+    while PpHolder do
+        PpHolder:Destroy()
+        PpHolder = workspace:FindFirstChild("PpHolder")
+    end
+    ]])
+end)
