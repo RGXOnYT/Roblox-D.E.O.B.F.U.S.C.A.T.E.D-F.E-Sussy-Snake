@@ -1,4 +1,4 @@
-warn("if ur shitsploit is ass then it wont load instantly") -- bonus i added
+warn("if ur shitsploit is ass then it wont load instantly") -- bonus i added XD
 -- Create ScreenGui
 local screenGui = Instance.new("ScreenGui")
 screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
